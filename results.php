@@ -55,16 +55,29 @@ $results = getAggregateResults();
                     <a href="/" class="btn btn-primary" style="margin-top: 16px;">Start Ranking</a>
                 </div>
             <?php else: ?>
-                <?php foreach ($results as $index => $person): 
+                <?php 
+                $currentRank = 0;
+                $prevScore = null;
+                
+                foreach ($results as $index => $person): 
+                    // Determine rank based on score
+                    $score = $person['average_score'];
+                    // If it's the first person or the score is different from previous, update rank
+                    // Using loose comparison for flexible float handling, though strict would work with rounded values
+                    if ($index === 0 || $score != $prevScore) {
+                        $currentRank = $index + 1;
+                    }
+                    $prevScore = $score;
+
                     $rankClass = '';
-                    if ($index === 0) $rankClass = 'gold';
-                    elseif ($index === 1) $rankClass = 'silver';
-                    elseif ($index === 2) $rankClass = 'bronze';
+                    if ($currentRank === 1) $rankClass = 'gold';
+                    elseif ($currentRank === 2) $rankClass = 'silver';
+                    elseif ($currentRank === 3) $rankClass = 'bronze';
                     
                     $avatar = $person['avatar_url'] ?: 'https://cdn.discordapp.com/embed/avatars/' . ($person['id'] % 5) . '.png';
                 ?>
                     <div class="result-card">
-                        <div class="result-rank <?= $rankClass ?>">#<?= $index + 1 ?></div>
+                        <div class="result-rank <?= $rankClass ?>">#<?= $currentRank ?></div>
                         <img class="result-avatar" src="<?= htmlspecialchars($avatar) ?>" alt="<?= htmlspecialchars($person['name']) ?>"
                              onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
                         
