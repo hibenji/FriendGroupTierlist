@@ -733,16 +733,44 @@ body::before {
 
 @media (max-width: 768px) {
     .header {
-        padding: 0 16px;
+        padding: 0 12px;
     }
 
-    .nav {
+    .logo span:not(.logo-icon) {
         display: none;
     }
 
+    .logo {
+        gap: 0;
+    }
+
+    .nav {
+        display: flex;
+        gap: 8px;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .user-info {
+        gap: 8px;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
     .main {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+        max-width: 100%;
     }
 
     .tier-label {
@@ -762,5 +790,71 @@ body::before {
     .person-name {
         font-size: 0.75rem;
         max-width: 60px;
+    }
+
+    /* Results page mobile styles */
+    .results-grid {
+        gap: 12px;
+    }
+
+    .result-card {
+        padding: 16px 12px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .result-rank {
+        font-size: 1.2rem;
+        min-width: 40px;
+    }
+
+    .result-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .result-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .result-name {
+        font-size: 1.1rem;
+    }
+
+    .result-stats {
+        font-size: 0.8rem;
+    }
+
+    .result-score {
+        flex-basis: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .score-value {
+        font-size: 1.5rem;
+    }
+
+    .score-label {
+        font-size: 0.75rem;
+    }
+
+    .tier-distribution {
+        max-width: 100%;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
     }
 }
