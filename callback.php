@@ -22,7 +22,9 @@ if (!isset($_GET['code'])) {
 
 // Validate CSRF state
 if (!isset($_GET['state']) || !validateState($_GET['state'])) {
-    die('Invalid state parameter. Please try logging in again.');
+    $_SESSION['login_error'] = 'Your session expired. Please try logging in again.';
+    header('Location: /login.php');
+    exit;
 }
 
 $code = $_GET['code'];

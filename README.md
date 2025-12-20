@@ -22,8 +22,8 @@ A Discord OAuth-authenticated tierlist application where users can rank their fr
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd chillgc.benji.link
+git clone https://github.com/hibenji/FriendGroupTierlist.git
+cd FriendGroupTierlist
 ```
 
 ### 2. Set Up the Database
